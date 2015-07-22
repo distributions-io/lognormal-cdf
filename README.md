@@ -6,8 +6,8 @@ Cumulative Distribution Function
 
 The [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for a [Lognormal](https://en.wikipedia.org/wiki/Lognormal_distribution) random variable is
 
-<div class="equation" align="center" data-raw-text="" data-equation="eq:cdf">
-	<img src="" alt="Cumulative distribution function for a Lognormal distribution.">
+<div class="equation" align="center" data-raw-text="F(x;\mu,\sigma)=\frac12 + \frac12\,\operatorname{erf}\left[\frac{\ln x-\mu}{\sqrt{2}\sigma}\right]" data-equation="eq:cdf">
+	<img src="https://cdn.rawgit.com/distributions-io/lognormal-cdf/eced4e40a09bfdb6fd4aa110115e84baa0a0d49d/docs/img/eqn.svg" alt="Cumulative distribution function for a Lognormal distribution.">
 	<br>
 </div>
 
@@ -40,32 +40,32 @@ var matrix = require( 'dstructs-matrix' ),
 	i;
 
 out = cdf( 1 );
-// returns
+// returns 0.5
 
-x = [ -4, -2, 0, 2, 4 ];
+x = [ -1, 0, 1, 2, 3 ];
 out = cdf( x );
-// returns [...]
+// returns [ 0, 0, ~0.5, ~0.756, ~0.864 ]
 
 x = new Float32Array( x );
 out = cdf( x );
-// returns Float64Array( [...] )
+// returns Float64Array( [0,0,~0.5,~0.756,~0.864] )
 
 x = new Float32Array( 6 );
 for ( i = 0; i < 6; i++ ) {
-	x[ i ] = i - 3;
+	x[ i ] = i;
 }
 mat = matrix( x, [3,2], 'float32' );
 /*
-	[ -3 -2
-	  -1  0
-	   1  2 ]
+	[ 0 1
+	  2 3
+	  4 5 ]
 */
 
 out = cdf( mat );
 /*
-	[
-
-	   ]
+	[  0     ~0.5
+	  ~0.756 ~0.864
+	  ~0.917 ~0.946 ]
 */
 ```
 
@@ -79,27 +79,27 @@ The function accepts the following `options`:
 *	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
 *	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 
-A [Lognormal](https://en.wikipedia.org/wiki/Lognormal_distribution) distribution is a function of 2 parameter(s): `mu`(location parameter) and `sigma`(scale parameter). By default, `mu` is equal to `0` and `sigma` is equal to `1`. To adjust either parameter, set the corresponding option(s).
+A [Lognormal](https://en.wikipedia.org/wiki/Lognormal_distribution) distribution is a function of two parameters: `mu`(location parameter) and `sigma`(scale parameter). By default, `mu` is equal to `0` and `sigma` is equal to `1`. To adjust either parameter, set the corresponding options.
 
 ``` javascript
-var x = [ -4, -2, 0, 2, 4 ];
+var x = [ -1, 0, 1, 2, 3 ];
 
 var out = cdf( x, {
-	'mu': 8,
+	'mu': 3,
 	'sigma': 2
 });
-// returns [...]
+// returns [ 0, ~0.0668, ~0.124, ~0.171, ~0.21, ~0.243 ]
 ```
 
 For non-numeric `arrays`, provide an accessor `function` for accessing `array` values.
 
 ``` javascript
 var data = [
-	[0,-4],
-	[1,-2],
-	[2,0],
+	[0,-1],
+	[1,0],
+	[2,1],
 	[3,2],
-	[4,4],
+	[4,3],
 ];
 
 function getValue( d, i ) {
@@ -109,7 +109,7 @@ function getValue( d, i ) {
 var out = cdf( data, {
 	'accessor': getValue
 });
-// returns [...]
+// returns [ 0, 0, ~0.5, ~0.756, ~0.864 ]
 ```
 
 
@@ -130,11 +130,11 @@ var out = cdf( data, {
 });
 /*
 	[
-		{'x':[0,]},
-		{'x':[1,]},
-		{'x':[2,]},
-		{'x':[3,]},
-		{'x':[4,]},
+		{'x':[0,0]},
+		{'x':[1,0]},
+		{'x':[2,~0.5]},
+		{'x':[3,~0.756]},
+		{'x':[4,~0.864]},
 	]
 */
 
@@ -147,18 +147,18 @@ By default, when provided a [`typed array`](https://developer.mozilla.org/en-US/
 ``` javascript
 var x, out;
 
-x = new Float64Array( [-4,-2,0,2,4] );
+x = new Float64Array( [-1,0,1,2,3] );
 
 out = cdf( x, {
 	'dtype': 'float32'
 });
-// returns Float32Array( [...] )
+// returns Float32Array( [0,0,~0.5,~0.756,~0.864] )
 
 // Works for plain arrays, as well...
-out = cdf( [-4,-2,0,2,4], {
+out = cdf( [-1,0,1,2,3], {
 	'dtype': 'float32'
 });
-// returns Float32Array( [...] )
+// returns Float32Array( [0,0,~0.5,~0.756,~0.864] )
 ```
 
 By default, the function returns a new data structure. To mutate the input data structure (e.g., when input values can be discarded or when optimizing memory usage), set the `copy` option to `false`.
@@ -170,12 +170,12 @@ var bool,
 	x,
 	i;
 
-x = [ -4, -2, 0, 2, 4 ];
+x = [ -1, 0, 1, 2, 3 ];
 
 out = cdf( x, {
 	'copy': false
 });
-// returns [...]
+// returns [ 0, 0, ~0.5, ~0.756, ~0.864 ]
 
 bool = ( x === out );
 // returns true
@@ -186,18 +186,18 @@ for ( i = 0; i < 6; i++ ) {
 }
 mat = matrix( x, [3,2], 'float32' );
 /*
-	[ -3 -2
-	  -1  0
-	   1  2 ]
+	[ 0 1
+	  2 3
+	  4 5 ]
 */
 
 out = cdf( mat, {
 	'copy': false
 });
 /*
-	[
-
-	   ]
+	[  0     ~0.5
+	  ~0.756 ~0.864
+	  ~0.917 ~0.946 ]
 */
 
 bool = ( mat === out );
