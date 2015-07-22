@@ -1,8 +1,8 @@
 options( digits = 16 )
 library( jsonlite )
 
-mu = 0
-sigma = 1
+mu = 12
+sigma = 3
 x = 0:24
 y = plnorm( x, mu, sigma )
 
