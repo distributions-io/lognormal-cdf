@@ -1,13 +1,13 @@
 Cumulative Distribution Function
 ===
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][codecov-image]][codecov-url] [![Dependencies][dependencies-image]][dependencies-url]
 
 > [Lognormal](https://en.wikipedia.org/wiki/Lognormal_distribution) distribution [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function).
 
-The [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for a [Lognormal](https://en.wikipedia.org/wiki/Lognormal_distribution) random variable is
+The [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for a [lognormal](https://en.wikipedia.org/wiki/Lognormal_distribution) random variable is
 
 <div class="equation" align="center" data-raw-text="F(x;\mu,\sigma)=\frac12 + \frac12\,\operatorname{erf}\left[\frac{\ln x-\mu}{\sqrt{2}\sigma}\right]" data-equation="eq:cdf">
-	<img src="https://cdn.rawgit.com/distributions-io/lognormal-cdf/eced4e40a09bfdb6fd4aa110115e84baa0a0d49d/docs/img/eqn.svg" alt="Cumulative distribution function for a Lognormal distribution.">
+	<img src="https://cdn.rawgit.com/distributions-io/lognormal-cdf/eced4e40a09bfdb6fd4aa110115e84baa0a0d49d/docs/img/eqn.svg" alt="Cumulative distribution function for a lognormal distribution.">
 	<br>
 </div>
 
@@ -30,7 +30,7 @@ var cdf = require( 'distributions-lognormal-cdf' );
 
 #### cdf( x[, options] )
 
-Evaluates the [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for the [Lognormal](https://en.wikipedia.org/wiki/Lognormal_distribution) distribution. `x` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
+Evaluates the [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for the [lognormal](https://en.wikipedia.org/wiki/Lognormal_distribution) distribution. `x` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 
 ``` javascript
 var matrix = require( 'dstructs-matrix' ),
@@ -79,7 +79,7 @@ The function accepts the following `options`:
 *	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
 *	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 
-A [Lognormal](https://en.wikipedia.org/wiki/Lognormal_distribution) distribution is a function of two parameters: `mu`(location parameter) and `sigma`(scale parameter). By default, `mu` is equal to `0` and `sigma` is equal to `1`. To adjust either parameter, set the corresponding options.
+A [Lognormal](https://en.wikipedia.org/wiki/Lognormal_distribution) distribution is a function of two parameters: `mu`(location parameter) and `sigma`(scale parameter). By default, `mu` is equal to `0` and `sigma` is equal to `1`. To adjust either parameter, set the corresponding option.
 
 ``` javascript
 var x = [ -1, 0, 1, 2, 3 ];
@@ -364,8 +364,8 @@ Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 [travis-image]: http://img.shields.io/travis/distributions-io/lognormal-cdf/master.svg
 [travis-url]: https://travis-ci.org/distributions-io/lognormal-cdf
 
-[coveralls-image]: https://img.shields.io/coveralls/distributions-io/lognormal-cdf/master.svg
-[coveralls-url]: https://coveralls.io/r/distributions-io/lognormal-cdf?branch=master
+[codecov-image]: https://img.shields.io/codecov/c/github/distributions-io/lognormal-cdf/master.svg
+[codecov-url]: https://codecov.io/github/distributions-io/lognormal-cdf?branch=master
 
 [dependencies-image]: http://img.shields.io/david/distributions-io/lognormal-cdf.svg
 [dependencies-url]: https://david-dm.org/distributions-io/lognormal-cdf

@@ -138,7 +138,7 @@ describe( 'distributions-lognormal-cdf', function tests() {
 			for ( var i = 0; i < data.length; i++ ) {
 				actual =  cdf( data[ i ], {
 					'mu': validationData.mu,
-		'sigma': validationData.sigma
+					'sigma': validationData.sigma
 				});
 				if ( isFiniteNumber( actual ) && isFiniteNumber( expected[ i ] ) ) {
 					assert.closeTo( actual, expected[ i ] , 1e-14 );
@@ -162,7 +162,7 @@ describe( 'distributions-lognormal-cdf', function tests() {
 
 		actual = cdf( data, {
 			'mu': validationData.mu,
-		'sigma': validationData.sigma
+			'sigma': validationData.sigma
 		});
 		assert.notEqual( actual, data );
 
@@ -175,7 +175,7 @@ describe( 'distributions-lognormal-cdf', function tests() {
 		actual = cdf( data, {
 			'copy': false,
 			'mu': validationData.mu,
-		'sigma': validationData.sigma
+			'sigma': validationData.sigma
 		});
 		assert.strictEqual( actual, data );
 
@@ -201,7 +201,7 @@ describe( 'distributions-lognormal-cdf', function tests() {
 
 		actual = cdf( data, {
 			'mu': validationData.mu,
-		'sigma': validationData.sigma
+			'sigma': validationData.sigma
 		});
 		assert.notEqual( actual, data );
 
@@ -215,7 +215,7 @@ describe( 'distributions-lognormal-cdf', function tests() {
 		actual = cdf( data, {
 			'copy': false,
 			'mu': validationData.mu,
-		'sigma': validationData.sigma
+			'sigma': validationData.sigma
 		});
 		expected = new Float32Array( validationData.expected.map( function( d ) {
 			return d === 'Inf' ? Infinity : d;
@@ -245,7 +245,7 @@ describe( 'distributions-lognormal-cdf', function tests() {
 		actual = cdf( data, {
 			'dtype': 'float32',
 			'mu': validationData.mu,
-		'sigma': validationData.sigma
+			'sigma': validationData.sigma
 		});
 
 		assert.notEqual( actual, data );
@@ -276,7 +276,7 @@ describe( 'distributions-lognormal-cdf', function tests() {
 		actual = cdf( data, {
 			'accessor': getValue,
 			'mu': validationData.mu,
-		'sigma': validationData.sigma
+			'sigma': validationData.sigma
 		});
 		assert.notEqual( actual, data );
 
@@ -291,7 +291,7 @@ describe( 'distributions-lognormal-cdf', function tests() {
 			'accessor': getValue,
 			'copy': false,
 			'mu': validationData.mu,
-		'sigma': validationData.sigma
+			'sigma': validationData.sigma
 		});
 		assert.strictEqual( actual, data );
 
@@ -320,7 +320,7 @@ describe( 'distributions-lognormal-cdf', function tests() {
 		actual = cdf( data, {
 			'path': 'x.1',
 			'mu': validationData.mu,
-		'sigma': validationData.sigma
+			'sigma': validationData.sigma
 		});
 
 		expected = validationData.expected
@@ -347,7 +347,7 @@ describe( 'distributions-lognormal-cdf', function tests() {
 			'path': 'x/1',
 			'sep': '/',
 			'mu': validationData.mu,
-		'sigma': validationData.sigma
+			'sigma': validationData.sigma
 		});
 		assert.strictEqual( actual, data );
 
@@ -374,7 +374,7 @@ describe( 'distributions-lognormal-cdf', function tests() {
 		mat = matrix( d1, [5,5], 'float64' );
 		out = cdf( mat, {
 			'mu': validationData.mu,
-		'sigma': validationData.sigma
+			'sigma': validationData.sigma
 		});
 
 		for ( i = 0; i < out.length; i++ ) {
@@ -413,7 +413,7 @@ describe( 'distributions-lognormal-cdf', function tests() {
 		out = cdf( mat, {
 			'dtype': 'float32',
 			'mu': validationData.mu,
-		'sigma': validationData.sigma
+			'sigma': validationData.sigma
 		});
 
 		assert.strictEqual( out.dtype, 'float32' );
